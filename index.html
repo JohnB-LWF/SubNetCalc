@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>SubNetCalc · IPv4 network calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="ipv4.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><div class="eyebrow"><span class="mark" aria-hidden="true">&gt;_</span> NETWORK TOOLS / IPV4</div><h1>SubNetCalc<span>.</span></h1><p>From an IP address to the network behind it.</p></header>
+    <section class="card input-card" aria-labelledby="input-title">
+      <div class="section-heading"><h2 id="input-title">01 / Address input</h2><span class="badge">LOCAL CALCULATION</span></div>
+      <form id="calculator" novalidate>
+        <div class="input-grid"><div><label for="ip">IPv4 address</label><input id="ip" name="ip" value="192.168.0.10" spellcheck="false" autocomplete="off" aria-describedby="ip-help error"><small id="ip-help">Dotted decimal or CIDR, e.g. 192.168.0.10/24</small></div>
+        <div><label for="subnet">Prefix or subnet mask</label><input id="subnet" name="subnet" value="/24" spellcheck="false" autocomplete="off" aria-describedby="subnet-help error"><small id="subnet-help">/0–/32 or 255.255.255.0</small></div></div>
+        <div style="margin-top:20px"><label for="parent">Parent network prefix (optional)</label><input id="parent" name="parent" placeholder="e.g. /24" spellcheck="false" autocomplete="off" aria-describedby="parent-help error"><small id="parent-help">Used to count borrowed subnet bits and subnetworks. Example: a /25 subnet within a /24 parent borrows 1 bit and creates 2 subnetworks.</small></div>
+        <div class="form-footer"><p>An address needs a subnet to identify its network.<br><strong>/24 is a starting value, not an inferred subnet.</strong></p><button type="submit">Calculate <span aria-hidden="true">↗</span></button></div>
+        <p id="error" class="error" role="alert" hidden></p>
+      </form>
+    </section>
+    <div id="results" hidden>
+      <div class="section-heading results-heading"><h2>02 / Network overview</h2><span class="badge" id="result-status">CALCULATED</span></div>
+      <div class="result-grid">
+        <section class="card featured"><h3>Network / CIDR</h3><output data-value="cidr" class="large"></output><p>The network address and its prefix length.</p></section>
+        <section class="card"><h3>Subnet mask</h3><output data-value="mask" class="large"></output><p><span data-value="prefix"></span> network bits · <span data-value="hostBits"></span> host bits</p></section>
+        <section class="card"><h3>Network address</h3><output data-value="network" class="large"></output></section>
+        <section class="card"><h3>Broadcast address</h3><output data-value="broadcast" class="large"></output></section>
+      </div>
+      <section class="card binary-card" aria-labelledby="binary-title"><div class="section-heading"><h2 id="binary-title">03 / The bitwise breakdown</h2><span class="badge">IP &amp; MASK = NETWORK</span></div><p>Only bits set to 1 in both the address and mask survive.</p>
+        <div class="binary-scroll" tabindex="0" role="region" aria-label="Binary AND calculation; scroll horizontally on small screens"><div class="binary-row"><span>IP address</span><output data-value="ipBinary"></output></div><div class="binary-row"><span><b>AND</b> subnet mask</span><output data-value="maskBinary"></output></div><div class="binary-row binary-result"><span>Network</span><output data-value="networkBinary"></output></div></div>
+      </section>
+      <section class="card" aria-labelledby="details-title"><div class="section-heading"><h2 id="details-title">04 / Address details</h2></div><dl class="details"><div><dt>Input address</dt><dd data-value="ip"></dd></div><div><dt>Hexadecimal</dt><dd data-value="hex"></dd></div><div><dt>Unsigned decimal</dt><dd data-value="decimal"></dd></div><div><dt>Wildcard mask</dt><dd data-value="wildcard"></dd></div><div><dt>Usable address range</dt><dd data-value="range"></dd></div><div><dt>Total addresses / usable</dt><dd data-value="counts"></dd></div><div><dt>Subnet bits</dt><dd data-value="subnetCalculation"></dd></div><div><dt>Host bits</dt><dd data-value="hostCalculation"></dd></div><div><dt>Subnetworks</dt><dd data-value="subnetworks"></dd></div></dl><p class="note" id="host-note"></p></section>
+    </div>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <footer>IPv4, demystified.<span>Runs in your browser. No address data is sent.</span></footer>
+  </main>
+</body>
+</html>
+
