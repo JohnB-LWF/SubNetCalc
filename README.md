@@ -2,10 +2,13 @@
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f1e05a?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](#)
+[![GitHub stars](https://img.shields.io/github/stars/JohnB-LWF/SubNetCalc?style=social)](https://github.com/JohnB-LWF/SubNetCalc/stargazers)
 
 A dependency-free IPv4 calculator with a responsive dark interface and reduced-motion-aware decode animation. Address processing stays in the browser.
 
 ![SubNetCalc screenshot](assets/SubNetCalc.png)
+
+ChatGPT Astra (light) was used as part of the workflow during the creation of this application.
 
 ## Run locally
 
