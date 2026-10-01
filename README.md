@@ -24,6 +24,10 @@ The calculator starts with the example address `192.168.0.10` and prefix `/24`. 
 
 For subnet planning, enter a parent prefix as well. For example, a `/25` subnet with a `/24` parent borrows one bit, yielding `2¹ = 2` subnets; each `/25` contains 128 total addresses and 126 usable host addresses. The parent field takes a prefix only; it calculates subnet counts but does not check whether a particular subnet address belongs to a specific parent network. Leave it blank if you do not need subnet counts.
 
+## Run now
+
+Try the live app at [subnetcalc.onrender.com](https://subnetcalc.onrender.com/).
+
 ### Input and calculation notes
 
 - IPv4 addresses must contain four decimal octets from 0 to 255. Leading-zero octets are rejected to avoid ambiguous interpretation.
